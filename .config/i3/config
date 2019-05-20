@@ -13,6 +13,9 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 0
 gaps inner 15
 gaps outer 15
+hide_edge_borders both
+
+workspace_layout default
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -24,16 +27,9 @@ font pango:System San Francisco Display 0 #13
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# The font above is very space-efficientt, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the oldt
+# X core fonts rendering does not support right-to-left and this being a bitmapabbedbindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -45,9 +41,18 @@ bindsym $mod+d exec rofi -show run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 #file manager
-bindsym $mod+f exec urxvt -e ranger
+bindsym $mod+g exec alacritty -e ranger
+
+#firefox
+bindsym $mod+f exec firefox
+
+#scrot (screenshot)
+bindsym $mod+Shift+p scrot -d 1
 
 # change focus
 bindsym $mod+j focus left
@@ -62,10 +67,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -83,9 +88,10 @@ bindsym $mod+v split v
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+ő layout stacking
+bindsym $mod+á layout tabbed
+bindsym $mod+Shift+u layout default
+bindsym $mod+ú layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -177,7 +183,6 @@ exec xrandr --output DP-3 --off --output HDMI-1-2 --off --output HDMI-1-1 --mode
 #Location provider
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
-hide_edge_borders both
 
 set $based3    #002b36
 set $based2    #073642
